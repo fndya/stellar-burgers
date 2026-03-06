@@ -24,7 +24,7 @@ export const BurgerConstructor: FC = () => {
   const orderModalData = useSelector(selectNewOrder);
   const user = useSelector(selectUser);
 
-  const onOrderClick = () => {
+  const onOrderClick = async () => {
     if (!constructorItems.bun || orderRequest) return;
 
     if (!user) {
@@ -34,15 +34,17 @@ export const BurgerConstructor: FC = () => {
 
     const bunId = constructorItems.bun._id;
     const fillingsIds = constructorItems.ingredients.map((i) => i._id);
-
     const ingredientIds = [bunId, ...fillingsIds, bunId];
 
-    dispatch(placeNewOrder(ingredientIds));
+    const resultAction = await dispatch(placeNewOrder(ingredientIds));
+
+    if (placeNewOrder.fulfilled.match(resultAction)) {
+      dispatch(clearAll());
+    }
   };
 
   const closeOrderModal = () => {
     dispatch(resetOrder());
-    dispatch(clearAll());
   };
 
   const price = useMemo(
