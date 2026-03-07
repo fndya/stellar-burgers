@@ -42,6 +42,14 @@ describe('Страница конструктора бургера', () => {
     cy.get('[data-cy="modal"]').should('not.exist');
   });
 
+  it('закрывает модальное окно ингредиента по клику на оверлей', () => {
+    cy.contains('Краторная булка N-200i').click();
+
+    cy.get('[data-cy="modal"]').should('exist');
+    cy.get('[data-cy="modal-overlay"]').click({ force: true });
+    cy.get('[data-cy="modal"]').should('not.exist');
+  });
+
   it('создаёт заказ', () => {
     cy.intercept('GET', '**/api/auth/user', {
       fixture: 'user.json'
@@ -76,6 +84,9 @@ describe('Страница конструктора бургера', () => {
     cy.get('[data-cy="modal-close"]').click();
     cy.get('[data-cy="modal"]').should('not.exist');
 
+    cy.get('[data-cy="constructor-filling"]').should('not.exist');
+    cy.get('[data-cy="constructor-bun-top"]').should('not.exist');
+    cy.get('[data-cy="constructor-bun-bottom"]').should('not.exist');
     cy.get('[data-cy="constructor-filling"]').should('not.exist');
   });
 
