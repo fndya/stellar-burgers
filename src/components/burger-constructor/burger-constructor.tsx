@@ -1,24 +1,51 @@
 import { FC, useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 
+import { useDispatch, useSelector } from '../../services/store';
+import {
+  selectConstructorItems,
+  selectNewOrder,
+  selectNewOrderLoading,
+  selectUser
+} from '../../services/selectors';
+import { clearAll } from '../../slices/constructor';
+import { placeNewOrder, resetOrder } from '../../slices/newOrder';
+
 export const BurgerConstructor: FC = () => {
-  /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
-  const constructorItems = {
-    bun: {
-      price: 0
-    },
-    ingredients: []
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const orderRequest = false;
+  const constructorItems = useSelector(selectConstructorItems);
+  const orderRequest = useSelector(selectNewOrderLoading);
+  const orderModalData = useSelector(selectNewOrder);
+  const user = useSelector(selectUser);
 
-  const orderModalData = null;
-
-  const onOrderClick = () => {
+  const onOrderClick = async () => {
     if (!constructorItems.bun || orderRequest) return;
+
+    if (!user) {
+      navigate('/login', { state: { from: location } });
+      return;
+    }
+
+    const bunId = constructorItems.bun._id;
+    const fillingsIds = constructorItems.ingredients.map((i) => i._id);
+    const ingredientIds = [bunId, ...fillingsIds, bunId];
+
+    const resultAction = await dispatch(placeNewOrder(ingredientIds));
+
+    if (placeNewOrder.fulfilled.match(resultAction)) {
+      dispatch(clearAll());
+    }
   };
-  const closeOrderModal = () => {};
+
+  const closeOrderModal = () => {
+    dispatch(resetOrder());
+  };
 
   const price = useMemo(
     () =>
@@ -30,14 +57,12 @@ export const BurgerConstructor: FC = () => {
     [constructorItems]
   );
 
-  return null;
-
   return (
     <BurgerConstructorUI
       price={price}
       orderRequest={orderRequest}
       constructorItems={constructorItems}
-      orderModalData={orderModalData}
+      orderModalData={orderModalData as any}
       onOrderClick={onOrderClick}
       closeOrderModal={closeOrderModal}
     />
