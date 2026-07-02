@@ -2,8 +2,25 @@
 
 A modern single-page application for building custom burgers with authentication, personal account, and real-time order management.
 
-> Educational project focused on React ecosystem, Redux Toolkit, routing, state management, and REST API integration.
+> A React + TypeScript application featuring burger customization, authentication, protected routes and REST API integration.
 
+
+## 🛠 Tech Stack
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/css-%23663399.svg?style=for-the-badge&logo=css&logoColor=white) 
+
+### Other tools used for this project
+- Redux Thunk (createAsyncThunk)
+- CSS Modules
+- REST API
+- ESLint
+- Prettier
+
+---
+
+
+<p align="center">
+  <img src="./screenshots/constructor.png" alt="Stellar Burgers Preview" width="100%">
+</p>
 
 ---
 
@@ -45,16 +62,24 @@ A modern single-page application for building custom burgers with authentication
 
 ---
 
-## 🛠 Tech Stack
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/css-%23663399.svg?style=for-the-badge&logo=css&logoColor=white) 
+## 📸 Screenshots
 
-- Redux Thunk (createAsyncThunk)
-- CSS Modules
-- REST API
-- ESLint
-- Prettier
-
----
+<table>
+    <tr>
+        <td align="center">
+            <img src="./screenshots/feed.png">
+            <br><b>Orders Feed</b>
+        </td>
+        <td align="center">
+            <img src="./screenshots/register.png">
+            <br><b>Registration</b>
+        </td>
+        <td align="center">
+            <img src="./screenshots/orderhistory.png">
+            <br><b>Order History</b>
+        </td>
+    </tr>
+</table>
 
 # 📁 Project Structure
 
@@ -120,7 +145,7 @@ Authentication includes:
 Clone repository
 
 ```bash
-git clone https://github.com/your_username/stellar-burgers.git
+git clone https://github.com/fndya/stellar-burgers.git
 ```
 
 Install dependencies
