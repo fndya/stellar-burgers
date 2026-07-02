@@ -19,7 +19,7 @@ A modern single-page application for building custom burgers with authentication
 
 
 <p align="center">
-  <img src="./screenshots/constructor.png" alt="Stellar Burgers Preview" width="100%">
+  <img src="./screenshots/main.png" alt="Stellar Burgers Preview" width="100%">
 </p>
 
 ---
@@ -67,15 +67,15 @@ A modern single-page application for building custom burgers with authentication
 <table>
     <tr>
         <td align="center">
-            <img src="./screenshots/feed.png">
+            <img src="./screenshots/feed.png" height="700">
             <br><b>Orders Feed</b>
         </td>
         <td align="center">
-            <img src="./screenshots/register.png">
+            <img src="./screenshots/register.png" height="700">
             <br><b>Registration</b>
         </td>
         <td align="center">
-            <img src="./screenshots/orderhistory.png">
+            <img src="./screenshots/orderhistory.png" height="700">
             <br><b>Order History</b>
         </td>
     </tr>
